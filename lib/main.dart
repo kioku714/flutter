@@ -46,12 +46,12 @@ class _HomePageState extends State<HomePage> {
             'https://img1.daumcdn.net/thumb/R720x0/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fliveboard%2FKCCAUTO%2F30f49582ea6d4a598561c1986efcf2ec.JPG',
         price: '약 38억 4천만원'),
     Person(
-        name: '카니발 4세대9인승 시그니처',
+        name: '카니발 4세대9인승 컨버터블컨버터블컨버터블',
         profileImg:
             'https://ci.encar.com/carpicture/carpicture06/pic2936/29364464_001.jpg?impolicy=heightRate&rh=480&cw=640&ch=480&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_03.png&t=20210323170454',
         price: "3,932만원"),
     Person(
-        name: '4시리즈 (F32)428i M 스포츠 컨버터블',
+        name: '4시리즈 (F32)428i M 스포츠 컨버터블컨버터블컨버터블',
         profileImg:
             'https://ci.encar.com/carpicture/carpicture03/pic2933/29331711_001.jpg?impolicy=heightRate&rh=480&cw=640&ch=480&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_03.png&t=20210322112331',
         price: '3,860만원'),
@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -113,19 +114,24 @@ class _HomePageState extends State<HomePage> {
                             fit: BoxFit.cover,
                             image: NetworkImage(Person.profileImg)))),
               ),
-              Column(
+              Expanded(child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     Person.name,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
                     style: TextStyle(fontSize: 18),
                   ),
                   Text(
                     Person.price,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 12),
                   )
                 ],
-              )
+              ))
             ],
           ),
         ),
