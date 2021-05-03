@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class DetailPage extends StatefulWidget {
-  DetailPage({Key key, this.title}) : super(key: key);
+class VehicleDetailPage extends StatefulWidget {
+  VehicleDetailPage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _DetailPageState createState() => _DetailPageState();
+  _VehicleDetailPage createState() => _VehicleDetailPage();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _VehicleDetailPage extends State<VehicleDetailPage> {
   @override
   Widget build(BuildContext context) {
     Widget titleSection = Container(
