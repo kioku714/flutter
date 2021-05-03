@@ -59,39 +59,23 @@ class _VehicleListPage extends State<VehicleListPage> {
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                    width: 100.0,
-                                    height: 100.0,
-                                    decoration: new BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: new DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(images[0].url)))),
+                              Image.network(images[0].url),
+                              Text(
+                                (index + 1).toString() + '. ' + vehicle.model + ' ' + vehicle.badgeDetail,
+                                textAlign: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: false,
+                                style: TextStyle(fontSize: 18),
                               ),
-                              Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        (index + 1).toString() + '. ' + vehicle.model + ' ' + vehicle.badgeDetail,
-                                        textAlign: TextAlign.left,
-                                        overflow: TextOverflow.ellipsis,
-                                        softWrap: false,
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                      Text(
-                                        vehicle.price.toString(),
-                                        textAlign: TextAlign.left,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(fontSize: 12),
-                                      )
-                                    ],
-                                  ))
+                              Text(
+                                vehicle.price.toString(),
+                                textAlign: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(fontSize: 12),
+                              )
                             ],
                           ),
                         ),
