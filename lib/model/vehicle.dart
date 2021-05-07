@@ -16,11 +16,26 @@ class Vehicle {
   final int price;
   final bool trust;
 
-  Vehicle({this.id, this.images, this.manufacturer, this.model, this.modelGroup, this.badge, this.badgeDetail, this.transmission, this.fuel, this.year, this.officeCity, this.mileage, this.price, this.trust});
+  Vehicle(
+      {this.id,
+      this.images,
+      this.manufacturer,
+      this.model,
+      this.modelGroup,
+      this.badge,
+      this.badgeDetail,
+      this.transmission,
+      this.fuel,
+      this.year,
+      this.officeCity,
+      this.mileage,
+      this.price,
+      this.trust});
 
   factory Vehicle.fromJson(Map<String, dynamic> json) {
     var list = json['image'] as List;
-    List<VehicleImage> images = list.map((e) => VehicleImage.fromJson(e)).toList();
+    List<VehicleImage> images =
+        list.map((e) => VehicleImage.fromJson(e)).toList();
 
     return Vehicle(
       id: json['id'] as int,

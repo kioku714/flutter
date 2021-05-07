@@ -1,15 +1,15 @@
 import 'vehicle.dart';
 
-class ResponseData {
+class Vehicles {
   final int count;
   final String next;
   final String previous;
   final List<Vehicle> results;
 
-  ResponseData({this.count, this.next, this.previous, this.results});
+  Vehicles({this.count, this.next, this.previous, this.results});
 
-  factory ResponseData.fromJson(Map<String, dynamic> json) {
-    return ResponseData(
+  factory Vehicles.fromJson(Map<String, dynamic> json) {
+    return Vehicles(
       count: json['count'],
       next: json['next'],
       previous: json['previous'],

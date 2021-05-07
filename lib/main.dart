@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:handle/vehicle_detail.dart';
-import 'package:handle/vehicle_list.dart';
+import 'package:handle/page/vehicle_detail.dart';
+import 'package:handle/page/vehicle_list.dart';
 
 void main() {
   runApp(MyApp());
