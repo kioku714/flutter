@@ -6,20 +6,27 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../model/vehicle.dart';
 
+_VehicleListPage _vehicleListPage = _VehicleListPage();
+
 class VehicleListPage extends StatefulWidget {
   VehicleListPage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _VehicleListPage createState() => _VehicleListPage();
+  _VehicleListPage createState() => _vehicleListPage;
+
+  void scrollToTop() {
+    _vehicleListPage._scrollToTop();
+  }
 }
 
 class _VehicleListPage extends State<VehicleListPage> {
   static const _pageSize = 20;
-  static const _page = 1;
+  static var _page = 1;
 
   final PagingController<int, Vehicle> _pagingController =
       PagingController(firstPageKey: 0);
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -40,6 +47,7 @@ class _VehicleListPage extends State<VehicleListPage> {
         final nextPageKey = pageKey + newItems.length;
         _pagingController.appendPage(newItems, nextPageKey);
       }
+      _page++;
     } catch (error) {
       _pagingController.error = error;
     }
@@ -52,6 +60,7 @@ class _VehicleListPage extends State<VehicleListPage> {
         ),
         child: PagedListView<int, Vehicle>.separated(
           pagingController: _pagingController,
+          scrollController: _scrollController,
           builderDelegate: PagedChildBuilderDelegate<Vehicle>(
             itemBuilder: (context, item, index) => VehicleListItem(
               vehicle: item,
@@ -66,5 +75,10 @@ class _VehicleListPage extends State<VehicleListPage> {
   void dispose() {
     _pagingController.dispose();
     super.dispose();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(_scrollController.position.minScrollExtent,
+        duration: Duration(microseconds: 1000), curve: Curves.fastOutSlowIn);
   }
 }

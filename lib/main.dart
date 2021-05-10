@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   HomePage({Key key, this.title}) : super(key: key);
   final String title;
+  final vehicleListPage = VehicleListPage(title: '차량 리스트');
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,14 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('차량 리스트'),
       ),
-      body: VehicleListPage(title: '차량 리스트'),
+      body: vehicleListPage,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          vehicleListPage.scrollToTop();
+        },
+        child: const Icon(Icons.arrow_upward),
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
