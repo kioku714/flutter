@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:handle/model/vehicle.dart';
@@ -24,7 +25,11 @@ class VehicleListItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(vehicle.images[0].url),
+              CachedNetworkImage(
+                imageUrl: vehicle.images[0].url,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text(
